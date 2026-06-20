@@ -63,14 +63,15 @@ export default function MobileNavigation({ items }: MainNavigationProps) {
                         </Link>
                     </div>
                     <ScrollArea className="my-4 h-[calc(100vh-8rem)] pb-8">
-                        <Accordion className="w-full" type="single" collapsible>
+                        <Accordion className="w-full">
+
                             <AccordionItem value="item-1">
                                 <AccordionTrigger>{firstItem?.title ?? ""}</AccordionTrigger>
                                 <AccordionContent>
                                     <div className="flex flex-col space-y-2 pl-2">
                                         {firstItem?.card?.map((item) => (
                                             /* Added asChild to prevent SheetClose from enforcing unwanted button wrappers */
-                                            <SheetClose key={item.title} asChild>
+                                            <SheetClose key={item.title}>
                                                 <Link to={String(item.href)} className="text-foreground/70">
                                                     {item.title}
                                                 </Link>
@@ -83,7 +84,7 @@ export default function MobileNavigation({ items }: MainNavigationProps) {
                         <div className="mt-4 flex flex-col space-y-2">
                             {firstItem?.menu?.map((item) => (
                                 /* Added asChild to smoothly convert the click target directly to the Link */
-                                <SheetClose key={item.title} asChild>
+                                <SheetClose key={item.title}>
                                     <Link to={String(item.href)} className="">
                                         {item.title}
                                     </Link>
