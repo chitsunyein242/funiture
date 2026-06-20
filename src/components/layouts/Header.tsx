@@ -1,7 +1,7 @@
 import MainNavigation from "@/components/layouts/MainNavigation";
 import MobileNavigation from "./MobileNavigation";
 import { siteConfig } from "@/config/site";
-// import { ModeToggle } from "@/components/mode-toggle";
+import { ModeToggle } from "@/components/mode-toggle";
 // import AuthDropDown from "@/components/layouts/AuthDropDown";
 // import CartSheet from "@/components/layouts/CartSheet";
 // import { User } from "@/data/user";
@@ -14,9 +14,9 @@ function Header() {
                 {/* <ProgressBar /> */}
                 <MainNavigation items={siteConfig.mainNav} />
                 <MobileNavigation items={siteConfig.mainNav} />
-                <div className="mr-8 flex flex-1 items-center justify-end space-x-4 lg:mr-0">
+                <div className="mr-8 flex flex-1 items-center justify-end space-x-4 lg:mr-4">
                     {/* <CartSheet /> */}
-                    {/* <ModeToggle /> */}
+                    <ModeToggle />
                     {/* <AuthDropDown user={User} /> */}
                 </div>
             </nav>

@@ -1,5 +1,5 @@
 import React from "react";
-import { Link } from "react-router";
+import { Link } from "react-router-dom";
 import {
     NavigationMenu,
     NavigationMenuContent,
@@ -34,7 +34,7 @@ export default function MainNavigation({ items }: MainNavigationProps) {
                             <NavigationMenuContent>
                                 <ul className="grid gap-3 p-4 md:w-100 lg:w-125 lg:grid-cols-[.75fr_1fr]">
                                     <li className="row-span-3">
-                                        <NavigationMenuLink>
+                                        <NavigationMenuLink asChild>
                                             <Link
                                                 className="from-muted/50 to-muted flex size-full flex-col justify-end rounded-md bg-linear-to-b p-6 no-underline outline-hidden select-none focus:shadow-md"
                                                 to="/"
@@ -65,11 +65,12 @@ export default function MainNavigation({ items }: MainNavigationProps) {
                     {items?.[0]?.menu &&
                         items[0].menu.map((item) => (
                             <NavigationMenuItem key={item.title}>
-                                <Link to={String(item.href)}>
-                                    <NavigationMenuLink className={navigationMenuTriggerStyle()}>
+                                {/* Make sure asChild is here so NavigationMenuLink doesn't render its own <a> tag */}
+                                <NavigationMenuLink asChild className={navigationMenuTriggerStyle()}>
+                                    <Link to={String(item.href)}>
                                         {item.title}
-                                    </NavigationMenuLink>
-                                </Link>
+                                    </Link>
+                                </NavigationMenuLink>
                             </NavigationMenuItem>
                         ))}
                 </NavigationMenuList>
@@ -79,15 +80,15 @@ export default function MainNavigation({ items }: MainNavigationProps) {
 }
 
 const ListItem = React.forwardRef<
-    React.ElementRef<"a">,
-    React.ComponentPropsWithoutRef<"a">
->(({ className, title, children, href, ...props }, ref) => {
+    HTMLAnchorElement,
+    React.ComponentPropsWithoutRef<typeof Link> & { title: string }
+>(({ className, title, children, href, to, ...props }, ref) => {
     return (
         <li>
-            <NavigationMenuLink>
+            <NavigationMenuLink asChild>
                 <Link
                     ref={ref}
-                    to={String(href)}
+                    to={to || String(href)}
                     className={cn(
                         "hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground block space-y-1 rounded-md p-3 leading-none no-underline outline-hidden transition-colors select-none",
                         className,
