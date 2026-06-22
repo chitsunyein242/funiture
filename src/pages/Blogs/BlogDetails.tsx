@@ -1,9 +1,9 @@
-function Blog() {
+function BlogDetails() {
     return (
         <div className="flex h-screen w-screen items-center justify-center text-2xl font-bold">
-            Blog
+            Blog Details
         </div>
     )
 }
 
-export default Blog
+export default BlogDetails
