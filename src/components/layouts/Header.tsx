@@ -9,7 +9,7 @@ import { ModeToggle } from "@/components/mode-toggle";
 
 function Header() {
     return (
-        <header className="fixed top-0 z-50 w-full border-b bg-background">
+        <header className="fixed top-0 z-50 w-full border-b bg-background px-4">
             <nav className="container mx-auto flex h-16 items-center">
                 {/* <ProgressBar /> */}
                 <MainNavigation items={siteConfig.mainNav} />

@@ -5,7 +5,7 @@ import NewsLetterForm from "@/components/news-letter";
 
 function Footer() {
     return (
-        <footer className="ml-4 w-full border-t lg:ml-0">
+        <footer className="ml-4 w-full border-t lg:ml-0 px-4 lg:px-8">
             <div className="container mx-auto pt-6 pb-8 lg:py-6">
                 <section className="flex flex-col gap-10 lg:flex-row lg:justify-between lg:gap-20">
                     <section>
